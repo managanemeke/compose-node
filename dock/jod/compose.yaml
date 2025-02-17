@@ -1,0 +1,18 @@
+services:
+  node:
+    image: node:22.14.0-alpine
+    container_name: node
+    working_dir: /app
+    environment:
+      - APP_PATH=${APP_PATH}
+    volumes:
+      - ${APP_PATH}:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    user: root
+    entrypoint: |
+      apk add --no-cache shadow && \
+      groupmod -g $$USER_GID node && \
+      chown -R node:node /app && \
+      su -s /bin/sh -c "cd /app && yarn install && yarn run dev" node

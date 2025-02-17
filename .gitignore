@@ -1,0 +1,8 @@
+*
+!/dock/
+!/dock/*/
+!/dock/*/.env.example
+!/dock/*/compose.yaml
+!/dock/*/readme.md
+!.gitignore
+!/readme.md
